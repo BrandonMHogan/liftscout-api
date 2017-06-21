@@ -1,15 +1,15 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.1.2-5'
+		kotlinVersion = '1.1.2-2'
 		springBootVersion = '1.5.4.RELEASE'
 	}
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+		classpath "org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}"
 	}
 }
 
@@ -20,6 +20,12 @@ apply plugin: 'org.springframework.boot'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+jar {
+    baseName = 'ls-rest-service'
+    version = '0.1.0'
+}
+
 compileKotlin {
 	kotlinOptions.jvmTarget = "1.8"
 }
@@ -31,7 +37,6 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
@@ -39,4 +44,8 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+springBoot {
+    mainClass = 'com.brandonhogan.liftscout.Application'
 }
