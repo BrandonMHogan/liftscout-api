@@ -6,13 +6,13 @@ import org.springframework.data.annotation.Id
  * Created by bhogan on 2017-06-21.
  */
 
-class Customer constructor(
+class Customer {
 
-        @Id
-        var id: String? = null,
-        var firstName: String,
-        var lastName: String
-) {
+    @Id
+    var id: String? = null
+    var firstName: String = ""
+    var lastName: String = ""
+
 
     override fun toString(): String {
         return String.format(
